@@ -14,8 +14,3 @@ config/name="scp-recursive"
 run/main_scene="uid://dvbyphhoih3ju"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[rendering]
-
-global_illumination/voxel_gi/quality=1
-anti_aliasing/quality/use_taa=true

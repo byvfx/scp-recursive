@@ -13,14 +13,14 @@ signal boot_complete()
 
 # Static boot messages (shown immediately)
 var boot_messages: Array[String] = [
-	"FOUNDATION OS v4.7.1",
+	"FOUNDATION OS v19.11.90",
 	"Copyright (c) SCP Foundation",
-	"BIOS Date: 09/15/1998",
+	"BIOS Date: 01/25/2008",
 	"",
 	"Checking system integrity...",
-	"CPU: Intel Pentium II 450MHz... OK",
-	"Memory Test: 128MB... OK",
-	"Primary IDE: WD 8.4GB... OK",
+	"CPU: Intel Core 2 Extreme QX6700... OK",
+	"Memory Test: 4096B... OK",
+	"Primary IDE: FD 1000GB... OK",
 ]
 
 # Typed messages (shown with delay)
