@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqirw1kqr0kf4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1emcc"]
+
+[node name="table" type="Node3D"]
+transform = Transform3D(5.57302, 0, 0, 0, 5.57302, 0, 0, 0, 5.57302, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.41376, 0, 0, 0, 1, 0, 0, 0, 1.99856, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_1emcc")

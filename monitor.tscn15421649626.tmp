@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3cqnmfa5s7kq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjybelc4iifpd" path="res://models/Monitor_v_2.obj" id="1_qh22o"]
+[ext_resource type="Script" uid="uid://t4yx1il5vo86" path="res://CRTMonitor.gd" id="2_fa1fk"]
+[ext_resource type="Script" uid="uid://q3f8u0mpikhe" path="res://BootScreen.gd" id="3_8qdrl"]
+
+[node name="monitor" type="Node3D"]
+
+[node name="MonitorV2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00999948, 8.85885e-05, -5.06377e-05, -8.85422e-05, 0.0099996, 9.37343e-06, 5.07187e-05, -8.92482e-06, 0.00999987, 0, 0, 0)
+mesh = ExtResource("1_qh22o")
+script = ExtResource("2_fa1fk")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+physics_interpolation_mode = 2
+size = Vector2i(800, 600)
+
+[node name="TerminalUI" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BootScreen" type="Control" parent="SubViewport/TerminalUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8qdrl")
+
+[node name="TextDisplay" type="RichTextLabel" parent="SubViewport/TerminalUI"]
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_selected_color = Color(0, 0.666667, 0, 1)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

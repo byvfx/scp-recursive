@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3cqnmfa5s7kq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjybelc4iifpd" path="res://assets/models/monitor/Monitor_v_2.obj" id="1_qh22o"]
+[ext_resource type="Script" uid="uid://t4yx1il5vo86" path="res://scenes/environment/crt_monitor/Monitor.gd" id="2_fa1fk"]
+[ext_resource type="Script" uid="uid://q3f8u0mpikhe" path="res://scenes/ui/boot_screen/boot_screen.gd" id="3_8qdrl"]
+[ext_resource type="Script" uid="uid://dp58j7sr4rxyx" path="res://scenes/main/ui_flow_controller.gd" id="3_xk0nc"]
+
+[node name="monitor" type="Node3D"]
+
+[node name="MonitorV2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0, 0)
+mesh = ExtResource("1_qh22o")
+script = ExtResource("2_fa1fk")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+physics_interpolation_mode = 2
+transparent_bg = true
+size = Vector2i(800, 800)
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TerminalUI" type="Control" parent="SubViewport/MarginContainer"]
+layout_mode = 2
+script = ExtResource("3_xk0nc")
+
+[node name="BootScreen" type="Control" parent="SubViewport/MarginContainer/TerminalUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8qdrl")
+
+[node name="TextDisplay" type="RichTextLabel" parent="SubViewport/MarginContainer/TerminalUI"]
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_selected_color = Color(0, 0.666667, 0, 1)
+bbcode_enabled = true
+scroll_active = false
+scroll_following = true

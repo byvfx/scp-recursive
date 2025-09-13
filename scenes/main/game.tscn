@@ -1,0 +1,148 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvbyphhoih3ju"]
+
+[ext_resource type="Script" uid="uid://b5bhu0miykpfd" path="res://scenes/main/game.gd" id="1_e3dby"]
+[ext_resource type="PackedScene" uid="uid://dqirw1kqr0kf4" path="res://scenes/environment/office/table.tscn" id="2_gsayk"]
+[ext_resource type="PackedScene" uid="uid://b3cqnmfa5s7kq" path="res://scenes/environment/crt_monitor/monitor.tscn" id="3_gf1f2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fc0e3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_7jktm"]
+sky_material = SubResource("ProceduralSkyMaterial_fc0e3")
+
+[sub_resource type="Environment" id="Environment_ryrav"]
+background_mode = 1
+background_energy_multiplier = 3.71
+sky = SubResource("Sky_7jktm")
+ambient_light_energy = 7.65
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.6
+ssil_enabled = true
+ssil_radius = 4.19
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.62
+glow_enabled = true
+glow_levels/2 = 3.05
+glow_levels/3 = 1.05
+glow_levels/4 = 0.45
+glow_levels/5 = 0.3
+glow_levels/6 = 0.4
+glow_blend_mode = 1
+glow_hdr_threshold = 0.31
+volumetric_fog_enabled = true
+
+[sub_resource type="Animation" id="Animation_j5wjh"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.76837e-07, 0.595709, 2.12759), Vector3(-4.76837e-07, 0.686731, 1.52204)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eow3j"]
+resource_name = "intro_cutscene"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.79083, 3.23472), Vector3(-0.140759, 1.22373, 2.13189)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vef74"]
+_data = {
+&"RESET": SubResource("Animation_j5wjh"),
+&"intro_cutscene": SubResource("Animation_eow3j")
+}
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_e3dby")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ryrav")
+
+[node name="table" parent="." instance=ExtResource("2_gsayk")]
+
+[node name="monitor" parent="." instance=ExtResource("3_gf1f2")]
+transform = Transform3D(1.00739, 0, 0, 0, 1.00739, 0, 0, 0, 1.00739, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vef74")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0.595709, 2.12759)
+current = true
+fov = 57.4888
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -0.722002, 0.691891, 0, -0.691891, -0.722002, -0.0251997, 9.02068, -5.89594)
+light_color = Color(1, 1, 0.921569, 1)
+light_energy = 10.0
+light_indirect_energy = 1.3
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_blur = 0.775
+distance_fade_enabled = true
+distance_fade_shadow = 40.0
+spot_range = 13.682
+spot_attenuation = 0.64
+spot_angle = 16.59
+spot_angle_attenuation = 1.1487
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3282, 3.98422)
+
+[node name="UIFlowController" type="CanvasLayer" parent="."]
+
+[node name="UILayer" type="Control" parent="UIFlowController"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
