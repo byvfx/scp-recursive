@@ -15,6 +15,8 @@ script = ExtResource("2_fa1fk")
 [node name="SubViewport" type="SubViewport" parent="."]
 physics_interpolation_mode = 2
 transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
 size = Vector2i(800, 800)
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
