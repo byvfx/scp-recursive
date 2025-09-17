@@ -44,35 +44,36 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 5
 
-[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="FileExplorer" type="Button" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 text = "File Explorer
 "
 
-[node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Terminal" type="Button" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 text = "Terminal
 "
 
-[node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Email" type="Button" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 text = "Email
 "
 
-[node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="InstantMessenger" type="Button" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 text = "Instant
 Messenger
 "
 
-[node name="Button5" type="Button" parent="VBoxContainer/GridContainer"]
+[node name="Cams" type="Button" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-text = "Button
+text = "Security
+Cams
 "
 
 [node name="Panel" type="Panel" parent="."]
@@ -93,4 +94,5 @@ offset_right = 112.0
 grow_vertical = 2
 text = "Start"
 
+[connection signal="pressed" from="VBoxContainer/GridContainer/FileExplorer" to="." method="_on_file_explorer_pressed"]
 [connection signal="pressed" from="Panel/Start" to="." method="_on_start_pressed"]
