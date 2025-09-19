@@ -7,16 +7,7 @@ func _ready() -> void:
 		# Get the viewport texture
 	var viewport_texture = viewport.get_texture()
 	
-	#var material := load('res://crt_shader.tres') as StandardMaterial3D
-	#if material == null:
-		#push_error("couldnt load shader")
-		#
-	#material.albedo_texture = viewport_texture
-	#material.emission_texture = viewport_texture
-	#material.uv1_scale = Vector3(-1,1,1)
-	#set_surface_override_material(0, material) 
 	
-	#Shader method
 	var shader = load('res://shaders/crt/shd_crt_effect.gdshader') as Shader
 	var material = ShaderMaterial.new()
 	material.shader = shader

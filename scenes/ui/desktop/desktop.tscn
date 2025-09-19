@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://0jwgm8pk458y"]
+[gd_scene load_steps=3 format=3 uid="uid://0jwgm8pk458y"]
 
 [ext_resource type="Script" uid="uid://cdirtsuycku3y" path="res://scenes/ui/desktop/desktop.gd" id="1_imui2"]
+[ext_resource type="Script" uid="uid://cc31qpmxeexh" path="res://scenes/ui/desktop/time_and_date.gd" id="2_s0fju"]
 
 [node name="Desktop" type="Control"]
 physics_interpolation_mode = 0
@@ -34,6 +35,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 59.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -42,41 +45,53 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/h_separation = 50
 columns = 5
 
 [node name="FileExplorer" type="Button" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 4
 text = "File Explorer
 "
 
 [node name="Terminal" type="Button" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 4
 text = "Terminal
 "
 
 [node name="Email" type="Button" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 5
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 100
 text = "Email
 "
 
 [node name="InstantMessenger" type="Button" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 5
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 100
 text = "Instant
 Messenger
 "
 
 [node name="Cams" type="Button" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_vertical = 5
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 100
 text = "Security
 Cams
 "
 
-[node name="Panel" type="Panel" parent="."]
+[node name="StartBar" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -86,13 +101,84 @@ offset_top = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Start" type="Button" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StartBar"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 112.0
+grow_horizontal = 2
 grow_vertical = 2
-text = "Start"
+
+[node name="Button" type="Button" parent="StartBar/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TimeAndDate" type="Control" parent="StartBar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -104.474976
+offset_top = -25.0
+offset_right = -3.4749756
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+script = ExtResource("2_s0fju")
+
+[node name="Timer" type="Timer" parent="StartBar/TimeAndDate"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartBar/TimeAndDate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeText" type="RichTextLabel" parent="StartBar/TimeAndDate/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]11:11AM"
+
+[node name="DateText" type="RichTextLabel" parent="StartBar/TimeAndDate/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]01/01/2025"
+
+[node name="FileExplorer" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FileExplorer"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 58.0
+grow_horizontal = 2
 
 [connection signal="pressed" from="VBoxContainer/GridContainer/FileExplorer" to="." method="_on_file_explorer_pressed"]
-[connection signal="pressed" from="Panel/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Terminal" to="." method="_on_terminal_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Email" to="." method="_on_email_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/InstantMessenger" to="." method="_on_instant_messenger_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Cams" to="." method="_on_cams_pressed"]

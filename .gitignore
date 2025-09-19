@@ -1,5 +1,127 @@
 # Godot 4+ specific ignores
+
+
+
+
+# Godot 4+ project files
 .godot/
-/android/
-CLAUDE.md
+.import/
+
+# Godot-specific files
+export.cfg
+export_presets.cfg
+*.tmp
 *.uid
+*.gd.uid
+
+# Godot editor files
+.mono/
+.vscode/
+.idea/
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Linux
+*~
+
+# Build outputs
+build/
+dist/
+exports/
+*.pck
+*.exe
+*.dmg
+*.app
+*.apk
+*.aab
+
+# Local development and testing
+test_saves/
+debug_logs/
+local_config/
+temp_assets/
+
+# SCP-████ specific
+# Hide any real SCP numbers if accidentally committed
+scp_numbers.txt
+entity_real_data.json
+
+# Development notes that shouldn't be public
+dev_notes/
+internal_lore/
+voice_recordings_raw/
+
+# Large asset files that should use Git LFS
+*.wav
+*.mp3
+*.ogg
+*.glb
+*.fbx
+*.blend1
+*.blend2
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Logs
+*.log
+
+# User settings
+user://
+*.cfg.old
+
+# Android
+/android/
+android/build/
+android/.gradle/
+android/gradle.properties
+
+
+# HTML5
+*.html.offline.html
+
+# Saves and user data (unless you want to track sample saves)
+saves/
+user_data/
+
+# Editor settings (remove if you want to share editor configuration)
+.godot/editor/
+.godot/imported/
+
+# Localization
+*.pot
+
+# Documentation build files
+docs/_build/
+
+# Python (if using any Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# IDE specific files
+*.swp
+*.swo
+*~
+
+
+# Visual Studio Code
+.vscode/
+*.code-workspace

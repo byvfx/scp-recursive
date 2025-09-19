@@ -44,6 +44,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_8qdrl")
+enable_glitches = true
 
 [node name="TextDisplay" type="RichTextLabel" parent="SubViewport/MarginContainer/TerminalUI"]
 texture_repeat = 3
